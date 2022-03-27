@@ -37,7 +37,7 @@ agent1 = OdssAgentV1(num_actions=env.num_actions)
 #NFSP
 agent1 = NFSPAgent(num_actions=env.num_actions,
                  state_shape=env.state_shape[0],
-                 hidden_layers_sizes = [4],
+                 hidden_layers_sizes = [64,64],
                  q_mlp_layers=[64,64],
                  device=device)
 
