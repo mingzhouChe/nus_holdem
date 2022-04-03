@@ -10,6 +10,9 @@ from rlcard.agents import DQNAgent, NFSPAgent, RandomAgent
 from odds_agent_21 import OddsAgentV21
 from rlcard.utils import tournament,reorganize,Logger,plot_curve
 
+epochs = 5000
+
+
 env = rlcard.make('limit-holdem', config={
     'seed': 123
     ,'allow_step_back': True
@@ -48,7 +51,7 @@ for _ in range(0, 1):
 env.set_agents(agents)
 
 with Logger("experiments/leduc_holdem_dqn_result/") as logger:
-    for episode in range(1000):
+    for episode in range(epochs):
 
         # Generate data from the environment
         trajectories, payoffs = env.run(is_training=True)
@@ -86,3 +89,19 @@ for i in range(0,games):
     print('game:',i)
     print(tournament(env, rounds))
     
+    
+# testing in tournament vs random
+agent_copy = agent
+agents = [agent,RandomAgent(num_actions=env.num_actions)]
+env.set_agents(agents)    
+print('\n agent_training vs random agent') 
+print('games:',games,' rounds:',rounds)
+print(agents)
+for i in range(0,games):
+    print('game:',i)
+    print(tournament(env, rounds))    
+
+
+
+
+
