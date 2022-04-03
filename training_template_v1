@@ -83,7 +83,8 @@ plot_curve(csv_path, fig_path, "agent_training")
 games = 5
 rounds = 1000
 
-print('\n games:',games,' rounds:',rounds)
+print('\n agent_training vs benchmark agent') 
+print('games:',games,' rounds:',rounds)
 print(agents)
 for i in range(0,games):
     print('game:',i)
